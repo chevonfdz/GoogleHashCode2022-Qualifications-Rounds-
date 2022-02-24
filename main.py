@@ -5,7 +5,6 @@ def get_data(file):
             print(lines)
 
             count = 0
-            skillDict = {}
             conDict = {}
 
             conNum = lines[count].strip().split()[0]
@@ -15,6 +14,7 @@ def get_data(file):
 
             for x in range(int(conNum)):
                 count += 1
+                skillDict = {}
                 conName = lines[count].strip().split()[0]
                 conSkillCount = lines[count].strip().split()[1]
 
