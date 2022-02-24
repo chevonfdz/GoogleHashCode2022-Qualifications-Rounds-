@@ -6,6 +6,7 @@ def get_data(file):
 
             count = 0
             conDict = {}
+            proDict = {}
 
             conNum = lines[count].strip().split()[0]
             proNum = lines[count].strip().split()[1]
@@ -27,11 +28,29 @@ def get_data(file):
 
                 conDict[conName] = skillDict
 
-            # for line in range(1, len(lines)):
-            #     likes = lines[line].strip().split()
-
             print(count)
             print(conDict)
+
+            for x in range(int(proNum)):
+                count += 1
+                skillDict = {}
+                proName = lines[count].strip().split()[0]
+                proNoDate = lines[count].strip().split()[1]
+                proScore = lines[count].strip().split()[2]
+                proBestBefore = lines[count].strip().split()[3]
+                proSkillCount = lines[count].strip().split()[4]
+
+                for y in range(int(proSkillCount)):
+                    count += 1
+                    proSkill = lines[count].strip().split()[0]
+                    proSkillLvl = lines[count].strip().split()[1]
+
+                    skillDict[proSkill] = proSkillLvl
+
+                proDict[proName] = [proNoDate, proScore, proBestBefore, skillDict]
+
+            print(count)
+            print(proDict)
 
             f.close()
 
