@@ -1,16 +1,46 @@
-# This is a sample Python script.
+def get_data(file):
+    try:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            print(lines)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+            count = 0
+            skillDict = {}
+            conDict = {}
+
+            conNum = lines[count].strip().split()[0]
+            proNum = lines[count].strip().split()[1]
+
+            print(conNum, proNum)
+
+            for x in range(int(conNum)):
+                count += 1
+                conName = lines[count].strip().split()[0]
+                conSkillCount = lines[count].strip().split()[1]
+
+                for y in range(int(conSkillCount)):
+                    count += 1
+                    conSkill = lines[count].strip().split()[0]
+                    conSkillLvl = lines[count].strip().split()[1]
+
+                    skillDict[conSkill] = conSkillLvl
+
+                conDict[conName] = skillDict
+
+            # for line in range(1, len(lines)):
+            #     likes = lines[line].strip().split()
+
+            print(count)
+            print(conDict)
+
+            f.close()
+
+    except FileNotFoundError:
+        return "File not found"
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+file = "a_an_example.in.txt"
+conNum = 0
+proNum = 0
+get_data(file)
+print("------")
